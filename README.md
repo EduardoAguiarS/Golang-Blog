@@ -14,7 +14,6 @@ Este projeto consiste na criação de um blog pessoal com foco na publicação d
 - **Fiber:** Framework web leve e performante para Go.
 - **GORM:** Biblioteca ORM para Go que facilita o mapeamento entre objetos e bancos de dados.
 - **MySQL:** Banco de dados relacional utilizado para armazenar os dados do blog.
-- **phpMyAdmin:** Interface web para gerenciamento do banco de dados MySQL.
 
 **Frontend:**
 
@@ -28,7 +27,6 @@ Este projeto consiste na criação de um blog pessoal com foco na publicação d
 - **Fiber:** [https://docs.gofiber.io/](https://docs.gofiber.io/)
 - **GORM:** [https://gorm.io/](https://gorm.io/)
 - **MySQL:** [https://www.mysql.com/](https://www.mysql.com/)
-- **phpMyAdmin:** [https://www.phpmyadmin.net/](https://www.phpmyadmin.net/)
 - **JavaScript:** [https://developer.mozilla.org/pt-BR/docs/Web/JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - **React:** [https://pt-br.legacy.reactjs.org/](https://pt-br.legacy.reactjs.org/)
 - **Tailwind CSS:** [https://tailwindcss.com/](https://tailwindcss.com/)
