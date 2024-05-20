@@ -2,7 +2,9 @@ package main
 
 import (
 	"github.com/EduardoAguiarS/Golang-Blog/database"
+	"github.com/EduardoAguiarS/Golang-Blog/router"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func init() {
@@ -19,14 +21,10 @@ func main() {
 
 	// Fiber App
 	app := fiber.New()
+	app.Use(logger.New())
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		c.Status(200)
-
-		return c.JSON(fiber.Map{
-			"message": "Hello, World!",
-		})
-	})
+	// Routes
+	router.SetupRoutes(app)
 
 	app.Listen(":3200")
 }
