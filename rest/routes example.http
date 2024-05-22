@@ -14,8 +14,8 @@ content-type: application/json
 }
 
 ###
-// Update an existing blog post
-PUT http://127.0.0.1:3200/35
+// Update an existing blog post - id is a path parameter
+PUT http://127.0.0.1:3200/:id
 content-type: application/json
 
 {
@@ -25,5 +25,5 @@ content-type: application/json
 }
 
 ###
-// Delete an existing blog post
-DELETE http://127.0.0.1:3200/35
+// Delete an existing blog post - id is a path parameter
+DELETE http://127.0.0.1:3200/:id

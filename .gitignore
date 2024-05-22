@@ -21,3 +21,5 @@ tmp/
 go.sum
 static/
 build/
+
+rest/routes.http
