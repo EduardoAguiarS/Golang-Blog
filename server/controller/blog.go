@@ -45,7 +45,12 @@ func BlogCreate(c *fiber.Ctx) error {
 		return c.JSON(context)
 	}
 
-	record.ID = 0
+	if record.ID != 0 {
+		context["statusText"] = "Bad Request"
+		context["message"] = "ID should not be provided in the request body"
+		c.Status(400)
+		return c.JSON(context)
+	}
 
 	if record.Image == "" {
 		record.Image = "https://via.placeholder.com/150"
@@ -81,6 +86,13 @@ func BlogUpdate(c *fiber.Ctx) error {
 		context["statusText"] = "Not Found"
 		context["message"] = "Blog not found"
 		c.Status(404)
+		return c.JSON(context)
+	}
+
+	if record.ID != 0 {
+		context["statusText"] = "Bad Request"
+		context["message"] = "ID should not be provided in the request body"
+		c.Status(400)
 		return c.JSON(context)
 	}
 

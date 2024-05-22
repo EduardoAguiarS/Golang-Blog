@@ -15,7 +15,7 @@ content-type: application/json
 
 ###
 // Update an existing blog post
-PUT http://127.0.0.1:3200/30
+PUT http://127.0.0.1:3200/33
 content-type: application/json
 
 {
@@ -24,4 +24,4 @@ content-type: application/json
 
 ###
 // Delete an existing blog post
-DELETE http://127.0.0.1:3200/29
+DELETE http://127.0.0.1:3200/32
