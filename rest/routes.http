@@ -5,7 +5,13 @@ GET http://127.0.0.1:3200
 
 ###
 // Create a new blog post
-POST http://127.0.0.1:3200
+POST http://127.0.0.1:3200/
+content-type: application/json
+
+{
+  "title": "My new blog post",
+  "body": "This is my new blog post. It's so cool!"
+}
 
 ###
 // Update an existing blog post

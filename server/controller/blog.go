@@ -30,6 +30,25 @@ func BlogCreate(c *fiber.Ctx) error {
 		"message":    "Add a Blog",
 	}
 
+	record := new(model.Blog)
+	if err := c.BodyParser(record); err != nil {
+		context["statusText"] = "Bad Request"
+		context["message"] = err.Error()
+		c.Status(400)
+		return c.JSON(context)
+	}
+
+	result := database.DBConn.Create(&record)
+	if result.Error != nil {
+		context["statusText"] = "Bad Request"
+		context["message"] = result.Error.Error()
+		c.Status(400)
+		return c.JSON(context)
+	}
+
+	context["message"] = "Blog is saved successfully"
+	context["data"] = record
+
 	c.Status(201)
 	return c.JSON(context)
 }
