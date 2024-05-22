@@ -22,4 +22,4 @@ go.sum
 static/
 build/
 
-rest/routes.http
+rest/myroutes.http
