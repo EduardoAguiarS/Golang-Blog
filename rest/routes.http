@@ -15,13 +15,13 @@ content-type: application/json
 
 ###
 // Update an existing blog post
-PUT http://127.0.0.1:3200/33
+PUT http://127.0.0.1:3200/35
 content-type: application/json
 
 {
-  "title": ""
+  "id": 40
 }
 
 ###
 // Delete an existing blog post
-DELETE http://127.0.0.1:3200/32
+DELETE http://127.0.0.1:3200/33

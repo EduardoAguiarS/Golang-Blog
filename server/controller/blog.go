@@ -40,7 +40,7 @@ func BlogCreate(c *fiber.Ctx) error {
 
 	if record.Title == "" || record.Body == "" {
 		context["statusText"] = "Bad Request"
-		context["message"] = "Title and Body are required, ID is ignored"
+		context["message"] = "Title and Body are required"
 		c.Status(400)
 		return c.JSON(context)
 	}
@@ -82,6 +82,16 @@ func BlogUpdate(c *fiber.Ctx) error {
 	var record model.Blog
 	database.DBConn.First(&record, id)
 
+	var updatedRecord model.Blog
+	if err := c.BodyParser(&updatedRecord); err != nil {
+		context["statusText"] = "Bad Request"
+		context["message"] = err.Error()
+		c.Status(400)
+		return c.JSON(context)
+	}
+
+	updatedRecord.ID = record.ID
+
 	if record.ID == 0 {
 		context["statusText"] = "Not Found"
 		context["message"] = "Blog not found"
@@ -89,21 +99,19 @@ func BlogUpdate(c *fiber.Ctx) error {
 		return c.JSON(context)
 	}
 
-	if record.ID != 0 {
-		context["statusText"] = "Bad Request"
-		context["message"] = "ID should not be provided in the request body"
-		c.Status(400)
-		return c.JSON(context)
+	if updatedRecord.Title == "" {
+		updatedRecord.Title = record.Title
 	}
 
-	if err := c.BodyParser(&record); err != nil {
-		context["statusText"] = "Bad Request"
-		context["message"] = err.Error()
-		c.Status(400)
-		return c.JSON(context)
+	if updatedRecord.Body == "" {
+		updatedRecord.Body = record.Body
 	}
 
-	result := database.DBConn.Save(&record)
+	if updatedRecord.Image == "" {
+		updatedRecord.Image = record.Image
+	}
+
+	result := database.DBConn.Save(&updatedRecord)
 	if result.Error != nil {
 		context["statusText"] = "Bad Request"
 		context["message"] = result.Error.Error()
