@@ -1,0 +1,16 @@
+// VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+// List all blog posts
+GET http://127.0.0.1:3200
+
+###
+// Create a new blog post
+POST http://127.0.0.1:3200
+
+###
+// Update an existing blog post
+PUT http://127.0.0.1:3200/
+
+###
+// Delete an existing blog post
+DELETE http://127.0.0.1:3200
