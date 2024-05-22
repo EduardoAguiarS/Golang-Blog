@@ -1,6 +1,10 @@
 package controller
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/EduardoAguiarS/Golang-Blog/database"
+	"github.com/EduardoAguiarS/Golang-Blog/model"
+	"github.com/gofiber/fiber/v2"
+)
 
 // Blog List
 func BlogList(c *fiber.Ctx) error {
@@ -8,6 +12,12 @@ func BlogList(c *fiber.Ctx) error {
 		"statusText": "OK",
 		"message":    "Blog List",
 	}
+
+	db := database.DBConn
+	var blogs []model.Blog
+	db.Find(&blogs)
+
+	context["data"] = blogs
 
 	c.Status(200)
 	return c.JSON(context)

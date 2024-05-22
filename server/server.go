@@ -1,13 +1,22 @@
 package main
 
 import (
+	"log"
+	"path/filepath"
+
 	"github.com/EduardoAguiarS/Golang-Blog/database"
 	"github.com/EduardoAguiarS/Golang-Blog/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/joho/godotenv"
 )
 
 func init() {
+	// Load .env file
+	if err := godotenv.Load(filepath.Join("..", ".env")); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	// Database Connection
 	database.ConnectDB()
 }

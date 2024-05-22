@@ -3,24 +3,17 @@ package database
 import (
 	"log"
 	"os"
-	"path/filepath"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
 	"github.com/EduardoAguiarS/Golang-Blog/model"
-	"github.com/joho/godotenv"
 )
 
 var DBConn *gorm.DB
 
 func ConnectDB() {
-	err := godotenv.Load(filepath.Join("..", ".env"))
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	host := os.Getenv("db_host")
 	user := os.Getenv("db_user")
 	password := os.Getenv("db_pass")
