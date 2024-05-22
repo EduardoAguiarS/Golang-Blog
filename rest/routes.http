@@ -15,7 +15,13 @@ content-type: application/json
 
 ###
 // Update an existing blog post
-PUT http://127.0.0.1:3200/
+PUT http://127.0.0.1:3200/4
+content-type: application/json
+
+{
+  "title": "My new blog post updated",
+  "body": "This is my new blog post. It's so cool! Updated."
+}
 
 ###
 // Delete an existing blog post
