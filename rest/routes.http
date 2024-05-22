@@ -25,4 +25,4 @@ content-type: application/json
 
 ###
 // Delete an existing blog post
-DELETE http://127.0.0.1:3200
+DELETE http://127.0.0.1:3200/0
