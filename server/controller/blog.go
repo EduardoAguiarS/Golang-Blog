@@ -38,6 +38,19 @@ func BlogCreate(c *fiber.Ctx) error {
 		return c.JSON(context)
 	}
 
+	if record.Title == "" || record.Body == "" {
+		context["statusText"] = "Bad Request"
+		context["message"] = "Title and Body are required, ID is ignored"
+		c.Status(400)
+		return c.JSON(context)
+	}
+
+	record.ID = 0
+
+	if record.Image == "" {
+		record.Image = "https://via.placeholder.com/150"
+	}
+
 	result := database.DBConn.Create(&record)
 	if result.Error != nil {
 		context["statusText"] = "Bad Request"
