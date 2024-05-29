@@ -1,29 +1,16 @@
+import Background from "./components/Background";
 import Home from "./pages/Home";
+import Blog from "./pages/Blog";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <div className="area fixed top-0">
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
+      <Background />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blog/:id" element={<Blog />} />
       </Routes>
-      <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase fixed bottom-5 right-5 shadow-2xl">
-        New Blog
-      </button>
     </>
   );
 }

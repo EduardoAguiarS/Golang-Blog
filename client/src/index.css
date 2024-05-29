@@ -178,3 +178,12 @@ body{
     }
 
 }
+
+.imageCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  max-width: 480px;
+  height: 192px;
+}
