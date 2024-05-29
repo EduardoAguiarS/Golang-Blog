@@ -27,3 +27,7 @@ content-type: application/json
 ###
 // Delete an existing blog post - id is a path parameter
 DELETE http://127.0.0.1:3200/:id
+
+###
+// Get a single blog post - id is a path parameter
+GET http://127.0.0.1:3200/:id
