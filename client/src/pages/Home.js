@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [apiData, setApiData] = useState(false);
@@ -43,12 +44,12 @@ const Home = () => {
                 <p className="leading-relaxed mb-3 text-gray-700">
                   {data.body.substring(0, 28) + "..."}
                 </p>
-                <a
+                <Link
                   className="text-indigo-700 inline-flex items-center text-center mx-auto"
-                  href="https://google.com"
+                  to={`/blog/${data?.id}`}
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
           ))}
