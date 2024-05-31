@@ -26,15 +26,25 @@ const Blog = () => {
     return () => {};
   }, [params.id]);
 
-  console.log(apiData);
-
   return (
     <>
-      <div className="container flex flex-wrap pt-6 mx-auto z-10">
+      <div className="container flex flex-wrap pt-6 mx-auto z-10 justify-center">
         <div className="blur-none">
-          <h1>Blog Datail</h1>
+          <h1 className="text-3xl text-gray-300 font-bold uppercase">
+            Blog Datail
+          </h1>
         </div>
       </div>
+      {apiData && (
+        <div className="container md:w-1/2 w-11/12 flex flex-wrap mx-auto mt-6 z-10 backdrop-blur bg-white/30 shadow-2xl border border-gray-200 rounded">
+          <div className="p-4 w-full">
+            <h1 className="text-2xl text-gray-700 font-bold uppercase block mx-auto text-center">
+              {apiData?.title}
+            </h1>
+            <p className="text-gray-700 mt-2 text-center">{apiData?.body}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };

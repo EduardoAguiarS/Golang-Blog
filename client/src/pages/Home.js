@@ -26,9 +26,12 @@ const Home = () => {
   return (
     <div className="container flex flex-wrap pt-6 mx-auto">
       <>
-        <button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase fixed bottom-5 right-5 shadow-2xl">
+        <Link
+          className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase fixed bottom-5 right-5 shadow-2xl z-20"
+          to="/add"
+        >
           New Blog
-        </button>
+        </Link>
         {apiData &&
           apiData.map((data) => (
             <div className="lg:w-1/3 sm:w-1/2 p-4" key={data?.id}>

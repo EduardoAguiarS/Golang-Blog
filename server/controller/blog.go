@@ -78,7 +78,7 @@ func BlogCreate(c *fiber.Ctx) error {
 	}
 
 	if record.Image == "" {
-		record.Image = "https://via.placeholder.com/150"
+		record.Image = "https://placehold.co/480x192"
 	}
 
 	result := database.DBConn.Create(&record)
