@@ -7,6 +7,7 @@ const Blog = () => {
   const params = useParams();
 
   const [apiData, setApiData] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +28,23 @@ const Blog = () => {
     return () => {};
   }, [params.id]);
 
+  const deleteData = async () => {
+    const apiUrl = `http://127.0.0.1:3200/${params.id}`;
+    try {
+      const response = await axios.delete(apiUrl);
+      if (response.status === 200) {
+        if (response?.data?.statusText === "OK") {
+          setApiData(false);
+        }
+      }
+
+      setShowModal(false);
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="container flex flex-wrap pt-6 mx-auto z-10 justify-center">
@@ -46,13 +64,53 @@ const Blog = () => {
           </div>
 
           <div className="w-full flex justify-center pb-4">
-            {/* Edit button */}
             <Link
               className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase"
               to={`/edit/${apiData?.id}`}
             >
               Edit
             </Link>
+            {/* Delete button and confirmation modal */}
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase ml-2"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              Delete
+            </button>
+            {showModal && (
+              <div
+                className="fixed inset-0 z-50"
+                onClick={() => setShowModal(false)}
+              >
+                <div
+                  className="fixed inset-0 bg-gray-500 opacity-75"
+                  onClick={(e) => e.stopPropagation()}
+                ></div>
+                <div className="fixed inset-0 flex items-center justify-center p-4">
+                  <div className="bg-white p-6 rounded-lg">
+                    <p className="text-gray-700">
+                      Are you sure you want to delete this blog?
+                    </p>
+                    <div className="flex justify-end mt-4">
+                      <button
+                        className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase"
+                        onClick={() => deleteData()}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase ml-2"
+                        onClick={() => setShowModal(false)}
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
