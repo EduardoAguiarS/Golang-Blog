@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BacktoHome from "../components/BackToHome";
 
 const Blog = () => {
   const params = useParams();
@@ -114,6 +115,7 @@ const Blog = () => {
           </div>
         </div>
       )}
+      <BacktoHome />
     </>
   );
 };

@@ -2,6 +2,7 @@ import Form from "../components/Form";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BacktoHome from "../components/BackToHome";
 
 const Edit = () => {
   const params = useParams();
@@ -39,6 +40,8 @@ const Edit = () => {
       </div>
 
       <Form title={title} body={body} />
+
+      <BacktoHome />
     </>
   );
 };

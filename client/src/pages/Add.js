@@ -1,4 +1,5 @@
 import Form from "../components/Form";
+import BacktoHome from "../components/BackToHome";
 
 const Add = () => {
   return (
@@ -12,6 +13,8 @@ const Add = () => {
       </div>
 
       <Form />
+
+      <BacktoHome />
     </>
   );
 };
