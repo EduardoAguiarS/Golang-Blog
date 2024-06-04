@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const params = useParams();
@@ -42,6 +43,16 @@ const Blog = () => {
               {apiData?.title}
             </h1>
             <p className="text-gray-700 mt-2 text-center">{apiData?.body}</p>
+          </div>
+
+          <div className="w-full flex justify-center pb-4">
+            {/* Edit button */}
+            <Link
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 border border-gray- px-4 rounded-full uppercase"
+              to={`/edit/${apiData?.id}`}
+            >
+              Edit
+            </Link>
           </div>
         </div>
       )}

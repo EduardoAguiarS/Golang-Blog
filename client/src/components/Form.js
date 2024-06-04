@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Form = ({ title, body }) => {
   const { register, handleSubmit } = useForm();
@@ -8,15 +9,34 @@ const Form = ({ title, body }) => {
     const apiUrl = "http://127.0.0.1:3200";
     try {
       axios.post(apiUrl, data);
+      setTimeout(() => {
+        window.location.href = "/";
+      });
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
+
+  const params = useParams();
+  const editForm = (data) => {
+    const apiUrl = `http://127.0.0.1:3200/${params.id}`;
+    try {
+      console.log("Entrei");
+      axios.put(apiUrl, data);
+      setTimeout(() => {
+        window.location.href = "/";
+      });
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  console.log(params.id);
 
   return (
     <form
       className="flex flex-col blur-none container mx-auto md:w-1/2 w-11/12"
-      onSubmit={handleSubmit(saveForm)}
+      onSubmit={handleSubmit(params.id ? editForm : saveForm)}
     >
       <label className="text-2xl font-bold">Title</label>
       <input
