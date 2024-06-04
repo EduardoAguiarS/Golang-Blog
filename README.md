@@ -31,6 +31,31 @@ Este projeto consiste na criação de um blog pessoal com foco na publicação d
 - **React:** [https://pt-br.legacy.reactjs.org/](https://pt-br.legacy.reactjs.org/)
 - **Tailwind CSS:** [https://tailwindcss.com/](https://tailwindcss.com/)
 
+### Como rodar o projeto
+
+#### Backend
+
+- Instalando o Golang na maquina
+- Instalar o MySQL e Configurar o MySQL
+- Clonar o projeto: `git clone git@github.com:EduardoAguiarS/Golang-Blog.git`
+- Acessar o projeto: `cd Golang-Blog`
+- Criar um arquivo de configuração: `.env` e configurar as variáveis de ambiente conforme o arquivo .env.example
+- Acessar a pasta server: `cd server` e instalar as dependências: `go get`
+- Rodar o projeto: `go run server.go`
+
+#### Frontend
+
+- Instalar o NodeJS na versão LTS
+- Acessar o projeto: `cd client`
+- Instalar as dependências: `npm install`
+- Rodar o projeto: `npm start`
+
+#### Dicas para testar as rotas no VSCode
+
+- Nas extensões do VSCode busque por ```humao.rest-client```
+- Na raiz do projeto busque pela pasta rest e acesso o arquivo `routes example.http`
+- Agora com o backend rodando basta clicar nas opções de send request.
+
 ## Observações
 
 - Este projeto ainda está em desenvolvimento e pode sofrer alterações no futuro.
